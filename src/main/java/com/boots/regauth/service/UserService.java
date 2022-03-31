@@ -1,9 +1,9 @@
-package com.boots.service;
+package com.boots.regauth.service;
 
-import com.boots.entity.Role;
-import com.boots.entity.User;
-import com.boots.repository.RoleRepository;
-import com.boots.repository.UserRepository;
+import com.boots.regauth.entity.Role;
+import com.boots.regauth.entity.User;
+import com.boots.regauth.repository.RoleRepository;
+import com.boots.regauth.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

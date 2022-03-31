@@ -1,6 +1,6 @@
-package com.boots.controller;
+package com.boots.regauth.controller;
 
-import com.boots.service.UserService;
+import com.boots.regauth.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

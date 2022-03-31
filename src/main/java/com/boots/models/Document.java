@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Document{
-    int id;
-    String imagePath;
-    int clientId;
+    private int id;
+    private String imagePath;
+    private int clientId;
 }

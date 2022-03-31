@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Delivery {
-    int id;
-
+    private int id;
+    private int amountOfSpaces;
+    private String organisation;
 }

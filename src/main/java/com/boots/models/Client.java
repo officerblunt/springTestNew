@@ -6,13 +6,13 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Client {
-    int id;
-    String firstName;
-    String lastName;
-    String password;
-    String phone;
-    String organisation;
-    String address;
-    Document doc;
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String password;
+    private String phone;
+    private String organisation;
+    private String address;
+    private Document doc;
 }
 

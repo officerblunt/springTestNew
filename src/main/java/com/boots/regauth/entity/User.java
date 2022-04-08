@@ -18,6 +18,8 @@ public class User implements UserDetails {
     private String username;
     @Size(min=2, message = "Не меньше 5 знаков")
     private String password;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String token;
     @Transient
     private String passwordConfirm;
     @ManyToMany(fetch = FetchType.EAGER)
@@ -93,4 +95,11 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 }

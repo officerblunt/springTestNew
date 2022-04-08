@@ -1,6 +1,8 @@
-package com.boots.service;
+package com.boots.regauth.controller;
 
-import com.boots.models.Delivery;
+import com.boots.regauth.entity.Delivery;
+import com.boots.regauth.service.DeliveryService;
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +12,7 @@ import java.util.List;
 
 @RestController
 public class DeliveryController {
+
     private final DeliveryService deliveryService;
 
     @Autowired
@@ -17,22 +20,31 @@ public class DeliveryController {
         this.deliveryService = deliveryService;
     }
 
-    @PostMapping(value = "/deliveries")
-    public ResponseEntity<?> create(@RequestBody Delivery delivery) {
+    @PostMapping(value = "/delivery")
+    public ResponseEntity<?> create(@RequestBody Delivery delivery)  {
         deliveryService.create(delivery);
         return new ResponseEntity<>(HttpStatus.CREATED);
-    }
+}
 
-    @GetMapping(value = "/deliveries")
-    public  ResponseEntity<List<Delivery>> read() {
-        final  List<Delivery> deliveries = deliveryService.readAll();
+    @GetMapping(value = "/delivery")
+    public ResponseEntity<List<Delivery>> read() {
+        final List<Delivery> deliveries = deliveryService.readAll();
 
-        return deliveries != null && !deliveries.isEmpty()
+        return deliveries != null &&  !deliveries.isEmpty()
                 ? new ResponseEntity<>(deliveries, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+   /* @GetMapping(value = "/delivery")
+    public JSONArray read() {
+        //ResponseEntity<List<Delivery>>
+        final List<Delivery> deliveries = deliveryService.readAll();
 
-    @GetMapping(value = "/deliveries/{id}")
+        return deliveries != null &&  !deliveries.isEmpty()
+                ? new ResponseEntity<>(deliveries, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }*/
+
+    @GetMapping(value = "/delivery/{id}")
     public ResponseEntity<Delivery> read(@PathVariable(name = "id") int id) {
         final Delivery delivery = deliveryService.read(id);
 
@@ -41,7 +53,7 @@ public class DeliveryController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping(value = "/deliveries/{id}")
+    @PutMapping(value = "/delivery/{id}")
     public ResponseEntity<?> update(@PathVariable(name = "id") int id, @RequestBody Delivery delivery) {
         final boolean updated = deliveryService.update(delivery, id);
 
@@ -50,7 +62,7 @@ public class DeliveryController {
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
 
-    @DeleteMapping(value = "/deliveries/{id}")
+    @DeleteMapping(value = "/delivery/{id}")
     public ResponseEntity<?> delete(@PathVariable(name = "id") int id) {
         final boolean deleted = deliveryService.delete(id);
 
